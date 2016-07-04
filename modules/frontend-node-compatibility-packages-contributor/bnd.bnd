@@ -1,5 +1,5 @@
 Bundle-SymbolicName: frontend.node.compatibility.packages.contributor
-Bundle-Version: 1.0.0.${tstamp}
+Bundle-Version: 1.0.0
 Import-Package: *
 Liferay-Package-Config: /META-INF/resources/package.json
 Web-ContextPath: /frontend-node-compatibility-packages-contributor
