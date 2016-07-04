@@ -1,0 +1,14 @@
+{
+  "name": "frontend-node-compatibility-packages-contributor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "author": "",
+  "license": "proprietary",
+  "dependencies": {
+    "assert": "^1.4.0",
+    "domain-browser": "^1.1.7",
+    "events": "^1.1.0"
+  }
+}
