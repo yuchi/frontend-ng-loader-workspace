@@ -125,7 +125,7 @@ public class NPMPackageInterpreter implements PackageInterpreter {
 				String aliasedName = itr.next();
 				Object source = browserAliases.get(aliasedName);
 
-				_logger.log(Logger.LOG_ERROR, "-- " + aliasedName + " >> " + source);
+				_logger.log(Logger.LOG_DEBUG, "-- " + aliasedName + " >> " + source);
 
 				if (source == null) {
 					continue;
@@ -135,8 +135,8 @@ public class NPMPackageInterpreter implements PackageInterpreter {
 
 					if (!value) {
 						_logger.log(
-							Logger.LOG_ERROR,
-							"Skipped modules is not supported (skipped " +
+							Logger.LOG_WARNING,
+							"Skipped modules are not supported (skipped " +
 								aliasedName + " in " + name + "@" + version +
 									")");
 					}
