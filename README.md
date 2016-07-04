@@ -75,19 +75,20 @@ module.exports = { render: render };
 <div id="<portlet:namespace />wrapper"></div>
 ```
 
+Inside a `<script>` you can “import” your dependency as a Promise and use it:
+
 ```js
-// Inside a <script> you can “import” your dependency as a Promise and use it:
 System
 .import('my-module-name-web@1.0.0')
 .then(function (MyModule) {
-  MyModule.render({}, '<portlet:namespace />wrapper')
+  MyModule.render({}, '<portlet:namespace />wrapper');
 });
 ```
 
 For AMD-oriented people you can also use that API:
 
 ```js
-System.amdRequire([ 'events' ], function (EventEmitter) {
-  const myEmitter = new EventEmitter();
+System.amdRequire([ 'my-module-name-web@1.0.0' ], function (MyModule) {
+  MyModule.render({}, '<portlet:namespace />wrapper');
 });
 ```
