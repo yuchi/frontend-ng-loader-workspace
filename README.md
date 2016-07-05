@@ -92,3 +92,15 @@ System.amdRequire([ 'my-module-name-web@1.0.0' ], function (MyModule) {
   MyModule.render({}, '<portlet:namespace />wrapper');
 });
 ```
+
+## Caveats
+
+- **Everything is deduped.**
+  - If two different bundles include different versions of a package that both resolve a dependency range, *only the higher will be used*.
+  - If two different bundles include the same version of a package, *only one of them __(undeterministically)__ will be used*.
+- **Only CommonJS modules are supported**, probably an issue in SystemJS with the heuristic used to determine the module format of the file.
+- **No combo loading**, currently.
+- **No preventive module dependency graph.*
+- **Only npm oriented _package.json_ files are supported**, but can be [extended externally (OSGi FTW)][npmi].
+
+[npmi]: https://github.com/yuchi/frontend-ng-loader-workspace/blob/948a305ce464da3a1b7e572a3c00212414856d37/modules/frontend-packages-bundle-config-extender/src/main/java/com/liferay/frontend/packages/definitions/npm/NPMPackageInterpreter.java#L36
