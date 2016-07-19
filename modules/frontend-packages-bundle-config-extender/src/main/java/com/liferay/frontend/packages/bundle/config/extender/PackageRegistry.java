@@ -32,6 +32,8 @@ public class PackageRegistry {
 
 		_builtins = new ArrayList<Builtin>();
 
+		// TODO move to capabilities?
+
 		_builtins.add(new Builtin("events", new NPMPackageDependency(
 			"events", StringPool.STAR), null));
 		_builtins.add(new Builtin("domain", new NPMPackageDependency(
