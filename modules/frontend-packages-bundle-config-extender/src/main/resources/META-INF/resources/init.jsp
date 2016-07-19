@@ -9,6 +9,6 @@
 
 <%
 String systemJSPathExtension = themeDisplay.isThemeJsFastLoad() ? ".js" : ".src.js";
-String systemJSPath = "/js/systemjs-0.17.0/dist/system" + systemJSPathExtension;
+String systemJSPath = "/js/systemjs-0.19.31/dist/system" + systemJSPathExtension;
 String systemJSConfigPath = "/system_js_config";
 %>

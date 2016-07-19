@@ -76,6 +76,7 @@ public class SystemJSConfigServlet extends HttpServlet {
 
 		JSONObject packages = JSONFactoryUtil.createJSONObject();
 		JSONObject map = JSONFactoryUtil.createJSONObject();
+		JSONObject paths = JSONFactoryUtil.createJSONObject();
 
 		for (PackageConfig pkgConfig : _packageRegistry.getPackageConfigs()) {
 			JSONObject pkg = JSONFactoryUtil.createJSONObject();
@@ -85,7 +86,7 @@ public class SystemJSConfigServlet extends HttpServlet {
 				PackageConfig resolved = _packageRegistry.resolve(dependency);
 
 				if (resolved != null) {
-					pkgMap.put(dependency.getName(), resolved.getIdentifier());
+					pkgMap.put(dependency.getName(), resolved.getPath());
 				}
 			}
 
@@ -107,6 +108,9 @@ public class SystemJSConfigServlet extends HttpServlet {
 			pkg.put("map", pkgMap);
 
 			map.put(pkgConfig.getIdentifier(), pkgConfig.getPath());
+			paths.put(
+				pkgConfig.getIdentifier() + "*",
+				pkgConfig.getPath() + "*");
 
 			packages.put(pkgConfig.getIdentifier(), pkg);
 		}
@@ -116,7 +120,8 @@ public class SystemJSConfigServlet extends HttpServlet {
 				builtin.getDependency());
 
 			if (resolved != null) {
-				map.put(builtin.getName(), resolved.getPath());
+				paths.put(
+					builtin.getName() + "*", resolved.getPath() + "*");
 			}
 			else {
 				_logger.log(
@@ -127,7 +132,8 @@ public class SystemJSConfigServlet extends HttpServlet {
 		}
 
 		cfg.put("packages", packages);
-		cfg.put("map", map);
+		/*cfg.put("map", map);*/
+		cfg.put("paths", paths);
 
 		try {
 			servletOutputStream.println(cfg.toString(2));

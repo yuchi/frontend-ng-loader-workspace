@@ -1,6 +1,7 @@
 
 <%@ include file="/init.jsp" %>
 
+<%--
 <aui:script position="inline" require="frontend-js-spa-web/liferay/init.es">
 
 	Liferay.SPA.app.on('beforeNavigate', function (event) {
@@ -19,3 +20,4 @@
 	});
 
 </aui:script>
+--%>
