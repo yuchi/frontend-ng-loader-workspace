@@ -75,7 +75,7 @@ public class SystemJSConfigServlet extends HttpServlet {
 		JSONObject cfg = JSONFactoryUtil.createJSONObject();
 
 		JSONObject packages = JSONFactoryUtil.createJSONObject();
-		JSONObject map = JSONFactoryUtil.createJSONObject();
+		/*JSONObject map = JSONFactoryUtil.createJSONObject();*/
 		JSONObject paths = JSONFactoryUtil.createJSONObject();
 
 		for (PackageConfig pkgConfig : _packageRegistry.getPackageConfigs()) {
@@ -107,7 +107,8 @@ public class SystemJSConfigServlet extends HttpServlet {
 
 			pkg.put("map", pkgMap);
 
-			map.put(pkgConfig.getIdentifier(), pkgConfig.getPath());
+			/*map.put(pkgConfig.getIdentifier(), pkgConfig.getPath());*/
+
 			paths.put(
 				pkgConfig.getIdentifier() + "*",
 				pkgConfig.getPath() + "*");
