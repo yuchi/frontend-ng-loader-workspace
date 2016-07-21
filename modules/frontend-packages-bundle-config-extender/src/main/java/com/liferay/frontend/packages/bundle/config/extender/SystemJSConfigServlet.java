@@ -102,9 +102,6 @@ public class SystemJSConfigServlet extends HttpServlet {
 
 			pkg.put("main", pkgConfig.getMain());
 
-			// TODO
-			pkg.put("format", "cjs");
-
 			pkg.put("map", pkgMap);
 
 			/*map.put(pkgConfig.getIdentifier(), pkgConfig.getPath());*/
