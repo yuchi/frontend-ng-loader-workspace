@@ -17,7 +17,6 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Modified;
 
-import com.github.zafarkhaja.semver.ParseException;
 import com.liferay.frontend.packages.definitions.ModuleAlias;
 import com.liferay.frontend.packages.definitions.PackageConfig;
 import com.liferay.frontend.packages.definitions.PackageDependency;
@@ -146,7 +145,7 @@ public class NPMPackageInterpreter implements PackageInterpreter {
 				}
 				else if (source instanceof String) {
 					String sourceName = (String)source;
-					
+
 					ModuleAlias moduleAlias = new ModuleAlias(
 						sourceName, aliasedName);
 
@@ -225,12 +224,7 @@ public class NPMPackageInterpreter implements PackageInterpreter {
 			String name = itr.next();
 			String value = deps.getString(name);
 
-			try {
-				dependencies.add(new NPMPackageDependency(name, value));
-			}
-			catch (ParseException pe) {
-				_logger.log(Logger.LOG_ERROR, "Cannot parse dependency", pe);
-			}
+			dependencies.add(new NPMPackageDependency(name, value));
 		}
 
 		return dependencies;
@@ -247,9 +241,9 @@ public class NPMPackageInterpreter implements PackageInterpreter {
 			}
 
 			String json = StringUtil.read(url.openStream());
-	
+
 			JSONObject jsonObject = JSONFactoryUtil.createJSONObject(json);
-	
+
 			return jsonObject;
 		}
 		catch (MalformedURLException murle) {
@@ -264,9 +258,7 @@ public class NPMPackageInterpreter implements PackageInterpreter {
 	}
 
 	private static class InvalidPackageException extends Exception {
-
 		private static final long serialVersionUID = 123233863902880765L;
-
 	}
 
 	private Logger _logger;

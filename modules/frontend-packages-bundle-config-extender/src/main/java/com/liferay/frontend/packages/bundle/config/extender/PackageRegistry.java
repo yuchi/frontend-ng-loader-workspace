@@ -67,7 +67,7 @@ public class PackageRegistry {
 		return ListUtil.fromArray(getPackageConfigs()).stream()
 			.filter(dependency::matches)
 			.sorted((p1, p2) ->
-				p2.getVersion().compareWithBuildsTo(p1.getVersion()));
+				p2.getVersion().compareTo(p1.getVersion()));
 	}
 
 	public PackageConfig resolve(PackageDependency dependency) {
@@ -78,7 +78,7 @@ public class PackageRegistry {
 		return ListUtil.fromArray(getPackageConfigs()).stream()
 			.filter(pkgConfig -> pkgConfig.getIdentifier().equals(identifier))
 			.sorted((p1, p2) ->
-				p2.getVersion().compareWithBuildsTo(p1.getVersion()))
+				p2.getVersion().compareTo(p1.getVersion()))
 			.findFirst()
 			.orElse(null);
 	}

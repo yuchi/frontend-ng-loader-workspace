@@ -1,30 +1,17 @@
 package com.liferay.frontend.packages.definitions.npm;
 
-import com.github.zafarkhaja.semver.ParseException;
-import com.github.zafarkhaja.semver.Parser;
-import com.github.zafarkhaja.semver.expr.Expression;
-import com.github.zafarkhaja.semver.expr.ExpressionParser;
+import com.github.yuchi.semver.Range;
 import com.liferay.frontend.packages.definitions.PackageConfig;
 import com.liferay.frontend.packages.definitions.PackageDependency;
 import com.liferay.frontend.packages.definitions.PackageIdentifier;
-import com.liferay.portal.kernel.util.StringUtil;
 
 public class NPMPackageDependency implements PackageDependency {
 
-	public NPMPackageDependency(String name, String value)
-		throws ParseException {
-
-		Parser<Expression> parser = ExpressionParser.newInstance();
-
-		value = StringUtil.replace(value, new String [] {
-			"||", "&&", "-0"
-		}, new String[] {
-			"|", "&", ""
-		});
-
-		_rangeExpression = parser.parse(value);
+	public NPMPackageDependency(String name, String value) {
+		_range = Range.from(value, true);
 		_pkgIdentifier = new NPMPackageIdentifier(name);
 		_name = name;
+		_value = value;
 	}
 
 	@Override
@@ -40,7 +27,7 @@ public class NPMPackageDependency implements PackageDependency {
 	@Override
 	public boolean matches(PackageConfig pkgConfig) {
 		if (matches(pkgConfig.getPackageIdentifier()) &&
-			_rangeExpression.interpret(pkgConfig.getVersion())) {
+			_range.test(pkgConfig.getVersion())) {
 
 			return true;
 		}
@@ -54,8 +41,14 @@ public class NPMPackageDependency implements PackageDependency {
 		return pkgIdentifier.equals(getPackageIdentifier());
 	}
 
+	@Override
+	public String toString() {
+		return _name + " " + _value;
+	}
+
 	private String _name = null;
-	private Expression _rangeExpression = null;
+	private String _value = null;
+	private Range _range = null;
 	private PackageIdentifier _pkgIdentifier = null;
 
 }

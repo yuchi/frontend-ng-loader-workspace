@@ -4,7 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-import com.github.zafarkhaja.semver.Version;
+import com.github.yuchi.semver.Version;
 import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
@@ -20,7 +20,7 @@ public class PackageConfig {
 		PackagesBundleConfig pkgsBundleConfig) {
 
 		_name = name;
-		_version = Version.valueOf(version);
+		_version = Version.from(version, true);
 		_main = main;
 		_moduleAliases = moduleAliases;
 		_dependencies = dependencies;
