@@ -46,7 +46,7 @@ var array = require('lodash/array');
 
 ### Requiring modules from *outside* (JSPs)
 
-Please refer to [SistemJS’ documentation](https://github.com/systemjs/systemjs) for a full explanation. Remember that you can entirely skip the configuration of the loader since it is done automatically by the modules in this repository.
+Please refer to [SystemJS’ documentation](https://github.com/systemjs/systemjs) for a full explanation. Remember that you can entirely skip the configuration of the loader since it is done automatically by the modules in this repository.
 
 In JSPs, and more generally outside files that are treated as part of your bundle‘s package, **you need to specify the full versioned name**.
 
