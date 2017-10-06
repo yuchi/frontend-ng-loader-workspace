@@ -4,6 +4,29 @@ Liferay Workspace for experiments in bringing SystemJS and packages support to L
 
 - - -
 
+<h3 align="center">Attention, important update!</h3>
+
+<p align="center">
+:warning: :tada: :warning: :tada: :warning: :tada: :warning:
+</p>
+
+<p align="center">
+  This project should be considered “deprecated”.<br />It helped us to assess if supporting npm in the Portal was viable or not.
+</p>
+
+<p align="center">
+  The big news is <strong>this has been merged in the Portal itself!</strong> :tada:<br />
+  <sub>Liferay <strong>DXP FP30</strong> and Liferay Portal <strong>CE GA5</strong> and later</sub>
+</p>
+
+- - -
+
+<p align="center">
+  :point_right: Head over the <a href="https://dev.liferay.com/develop/tutorials/-/knowledge_base/7-0/introduction">official documentation</a> to discover how to leverage npm dependencies in your project.
+</p>
+
+- - -
+
 ## Using SystemJS
 
 Once you have installed the `frontend-packages-bundle-config-extender` module, you can start using npm as your package manager in Liferay Portal projects.
